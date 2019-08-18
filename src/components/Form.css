@@ -1,0 +1,40 @@
+.create{
+    margin-top:20px;
+    background-color:rgba(99, 205, 218, 0.5);
+    padding:15px;
+}
+.create h2{
+    font-size:18px;
+    margin-bottom:10px;
+}
+.create input{
+    display:block;
+    width:100%;
+    padding:3px 10px;
+    border:none;
+    background-color:rgba(255,255,255,.8);
+    margin-bottom:15px;
+    border-radius:2px;
+}
+.create textarea{
+    display: block;
+    width:100%;
+    min-height:50px;
+    border:none;
+    background-color:rgba(255,255,255,.8);
+    border-radius:2px;
+    resize: none;
+    margin-bottom:15px;
+    padding:5px 10px;
+}
+.create .group{
+    text-align:right;
+}
+.create button{
+    padding:5px 12px;
+    background-color:rgba(61, 193, 211,1.0);
+    color:#fff;
+    font-size:16px;
+    border-radius:3px;
+    margin-left:10px;
+}
