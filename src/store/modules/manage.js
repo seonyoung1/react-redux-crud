@@ -11,16 +11,9 @@ const CHANGE_INPUT_TITLE = "manage/CHANGE_INPUT_TITLE";
 const CHANGE_INPUT_DESC = "manage/CHANGE_INPUT_DESC";
 
 let id = 3;
-// export const changeInput = (text, name) => ({ type: CHANGE_INPUT, text, name });
-// export const select = current => ({ type: SELECT, current });
-// export const createList = (title, desc) => ({ type: CREATE, title, desc, id: id++ });
-// export const updateList = (title, desc, id) => ({ type: UPDATE, title, desc, id });
-// export const deleteList = id => ({ type: DELETE, id });
-// export const modeChange = text => ({ type: MODE , text });
-
 export const select = createAction(SELECT, current => current);
 export const createList = createAction(CREATE, (title, desc) => ({ title, desc, id: id++ }));
-export const updateList = createAction(UPDATE, (title, desc, id) => ({ title, desc, id }));
+export const updateList = createAction(UPDATE, (id, title, desc) => ({ id, title, desc }));
 export const deleteList = createAction(DELETE, id => id);
 export const modeChange = createAction(MODE, text => text);
 export const changeInput = createAction(CHANGE_INPUT, text => text);
@@ -78,7 +71,13 @@ export default handleActions({
         })
     }),
     [UPDATE]: (state, action) => ({
-
+        ...state,
+        contents: state.contents.map(
+            item =>
+                item.id === action.payload.id
+                ? {...item, title: action.payload.title, desc: action.payload.desc }
+                : item
+        ),
     }),
     [DELETE]: (state, action) => ({
         ...state,
@@ -90,39 +89,3 @@ export default handleActions({
     }),
 
 }, initialState);
-
-// export default function manage(state = initialState, action){
-//     switch( action.type ) {
-//         case SELECT:
-//             return {
-//                 ...state,
-//                 current: action.current
-//             };
-//         case CHANGE_INPUT:
-//             return {
-//                 ...state,
-//                 input: action.text
-//             };
-//         case CREATE:
-//             return {
-//                 ...state,
-//                 contents: state.contents.concat({
-//                     id: action.id,
-//                     title: action.title,
-//                     desc: action.desc,
-//                 })
-//             };
-//         case DELETE:
-//             return {
-//                 ...state,
-//                 contents: state.contents.filter( item => item.id !== action.id )
-//             };
-//         case MODE:
-//             return {
-//                 ...state,
-//                 mode: action.text,
-//             };
-//         default:
-//             return state;
-//     }
-// };

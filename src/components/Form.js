@@ -3,7 +3,7 @@ import "./Form.css";
 
 const Form = ({ mode, inputTitle, inputDesc, input, onChange, onChangeTitle, onChangeDesc, onSubmit, onMode }) => {
     return(
-        <div className={mode}>
+        <div className={`form ${mode}`}>
             <h2>{mode}</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" name="title" value={inputTitle} onChange={onChangeTitle} placeholder="Title" />

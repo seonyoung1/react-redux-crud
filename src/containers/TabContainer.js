@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Tab from "../components/Tab";
+import UpdateContainer from "./UpdateContainer";
 import * as manageActions from "../store/modules/manage";
 
 class TabContainer extends Component {
@@ -13,15 +14,16 @@ class TabContainer extends Component {
         const { current, contents, mode } = this.props;
         return (
             <>
-                { mode !== "welcome" ? (
+                {mode === "welcome" && <p className="welcome">컨텐츠를 추가하세요!</p>}
+                {mode === "update" && <UpdateContainer /> }
+                {(mode !== "update" && mode !== "welcome" ) &&
                     <Tab
+                        mode={mode}
                         current={current}
                         contents={contents}
                         onSelect={this.handleSelect}
                     />
-                ) : (
-                    <p className="welcome">컨텐츠를 추가하세요!</p>
-                )}
+                }
             </>
         );
     }
@@ -31,6 +33,9 @@ const mapStateToProps = ({manage}) => ({
     contents: manage.contents,
     current: manage.current,
     mode: manage.mode,
+    input: manage.input,
+    inputTitle: manage.inputTitle,
+    inputDesc: manage.inputDesc,
 });
 
 // const mapDispatchToProps = dispatch => ({

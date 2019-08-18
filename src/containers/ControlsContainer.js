@@ -5,10 +5,8 @@ import Controls from "../components/Controls";
 import CreateContainer from "./CreateContainer";
 import * as manageActions from "../store/modules/manage";
 
-class ControlsContainer extends Component {
-    handleUpdate = () => {
 
-    };
+class ControlsContainer extends Component {
     handleDelete = () => {
         const { current, contents, ManageActions } = this.props;
         let modal = false;
@@ -31,7 +29,6 @@ class ControlsContainer extends Component {
                     <CreateContainer />
                 )}
                 <Controls
-                    onUpdate={this.handleUpdate}
                     onDelete={this.handleDelete}
                     onMode={this.handleMode}
                 />

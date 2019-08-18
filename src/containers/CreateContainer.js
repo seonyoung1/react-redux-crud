@@ -6,12 +6,13 @@ import {connect} from "react-redux";
 
 class CreateContainer extends Component {
     handleSubmit = e => {
-        const { ManageActions, inputTitle, inputDesc } = this.props;
+        const { ManageActions, inputTitle, inputDesc, contents } = this.props;
         e.preventDefault();
         ManageActions.createList(
             inputTitle,
             inputDesc
         );
+        ManageActions.select(contents.length);
         ManageActions.modeChange("read");
         ManageActions.changeInputTitle("");
         ManageActions.changeInputDesc("");
@@ -26,7 +27,7 @@ class CreateContainer extends Component {
         ManageActions.changeInputDesc(e.target.value);
     };
     handleChange = e => {
-        const { ManageActions, input } = this.props;
+        const { ManageActions } = this.props;
         ManageActions.changeInput({[e.target.name] : e.target.value});
         //[e.target.name] : e.target.value
     };
