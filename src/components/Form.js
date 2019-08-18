@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Form.css";
 
-const Form = ({ mode, inputTitle, inputDesc, input, onChange, onChangeTitle, onChangeDesc, onSubmit, onMode }) => {
+const Form = ({ mode, inputTitle, inputDesc, onChangeTitle, onChangeDesc, onSubmit, onMode }) => {
     return(
         <div className={`form ${mode}`}>
             <h2>{mode}</h2>

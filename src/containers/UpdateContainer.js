@@ -33,6 +33,10 @@ class UpdateContainer extends Component {
         const { ManageActions } = this.props;
         ManageActions.changeInputDesc(e.target.value);
     };
+    handleMode = text => {
+        const { ManageActions } = this.props;
+        ManageActions.modeChange(text);
+    };
 
     render() {
         const { mode, inputTitle, inputDesc } = this.props;
