@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Tab from "../components/Tab";
 import UpdateContainer from "./UpdateContainer";
-import * as manageActions from "../store/modules/manage";
+import * as manageActions from "../modules/manage";
 
 const TabContainer = ({ ManageActions, mode, current, contents, }) => {
     const handleSelect = current => {

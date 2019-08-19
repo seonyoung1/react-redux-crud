@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as manageActions from "../store/modules/manage";
+import * as manageActions from "../modules/manage";
 import Form from "../components/Form";
 
 const UpdateContainer = ({ ManageActions, inputTitle, inputDesc, mode, contents, current }) => {

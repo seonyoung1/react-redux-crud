@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Controls from "../components/Controls";
 import CreateContainer from "./CreateContainer";
-import * as manageActions from "../store/modules/manage";
+import * as manageActions from "../modules/manage";
 
 const ControlsContainer = ({ mode, current, contents, ManageActions }) => {
     const handleDelete = () => {
