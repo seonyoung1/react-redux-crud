@@ -20,7 +20,7 @@ components 시절의 코드로 작성했음
 
 input 은 리덕스에서 제외하고 local 에서 관리
 
-## 공부날짜
+## Update
 
 2019-08-18~19
 
@@ -29,4 +29,4 @@ input 은 리덕스에서 제외하고 local 에서 관리
 - [x] input 을 공용해서 사용할 수 없을까? 
       현재 input 당 하나씩 변수, 액션 설정하는 비효율의 극치...ㅜㅜ
       
-      input data를 local 에 할당해서 input 관련 Action은 제거!
+      input change를 local 에서 변경, input 관련 Action은 제거!
