@@ -33,7 +33,7 @@ const Tab = ({ current, contents, onSelect }) => {
                 { contents.map((item, index) => {
                     return (
                     <li key={item.id}>
-                        <button onClick={() => onSelect(index)} className={index === current && "active"}>
+                        <button onClick={() => onSelect(index)} className={index === current ? "active" : ""}>
                             {item.title}
                         </button>
                     </li>)

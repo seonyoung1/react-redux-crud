@@ -6,9 +6,6 @@ const CREATE = "manage/CREATE"; //생성
 const UPDATE = "manage/UPDATE"; //수정
 const DELETE = "manage/DELETE"; //삭제
 const MODE = "manage/MODE";
-const CHANGE_INPUT = "manage/CHANGE_INPUT";
-const CHANGE_INPUT_TITLE = "manage/CHANGE_INPUT_TITLE";
-const CHANGE_INPUT_DESC = "manage/CHANGE_INPUT_DESC";
 
 let id = 3;
 export const select = createAction(SELECT, current => current);
@@ -16,9 +13,6 @@ export const createList = createAction(CREATE, (title, desc) => ({ title, desc, 
 export const updateList = createAction(UPDATE, (id, title, desc) => ({ id, title, desc }));
 export const deleteList = createAction(DELETE, id => id);
 export const modeChange = createAction(MODE, text => text);
-export const changeInput = createAction(CHANGE_INPUT, text => text);
-export const changeInputTitle = createAction(CHANGE_INPUT_TITLE, text => text );
-export const changeInputDesc = createAction(CHANGE_INPUT_DESC, text => text );
 
 const initialState = {
     current: 0, //현재 선택된 탭 index
@@ -40,24 +34,9 @@ const initialState = {
         },
     ],
     mode: "read",
-    inputTitle: "",
-    inputDesc:"",
-    input:""
 };
 
 export default handleActions({
-    [CHANGE_INPUT]: (state, action) => ({
-        ...state,
-        input: action.payload
-    }),
-    [CHANGE_INPUT_TITLE]: (state, action) => ({
-        ...state,
-        inputTitle: action.payload
-    }),
-    [CHANGE_INPUT_DESC]: (state, action) => ({
-        ...state,
-        inputDesc: action.payload
-    }),
     [SELECT]: (state, action) => ({
         ...state,
         current: action.payload

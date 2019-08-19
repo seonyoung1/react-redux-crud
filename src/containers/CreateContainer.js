@@ -1,38 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as manageActions from "../modules/manage";
 import Form from "../components/Form";
 
 const CreateContainer = ({ ManageActions, mode, inputTitle, inputDesc, contents  }) => {
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+
     const handleSubmit = e => {
         e.preventDefault();
         ManageActions.createList(
-            inputTitle,
-            inputDesc
+            title,
+            desc
         );
         ManageActions.select(contents.length);
         ManageActions.modeChange("read");
-        ManageActions.changeInputTitle("");
-        ManageActions.changeInputDesc("");
     };
     const handleChangeTitle = e => {
-        ManageActions.changeInputTitle(e.target.value);
+        //ManageActions.changeInputTitle(e.target.value);
+        setTitle(e.target.value);
     };
     const handleChangeDesc = e => {
-        ManageActions.changeInputDesc(e.target.value);
-    };
-    const handleChange = e => {
-        ManageActions.changeInput({[e.target.name] : e.target.value});
-        //[e.target.name] : e.target.value
+        //ManageActions.changeInputDesc(e.target.value);
+        setDesc(e.target.value);
     };
     const handleMode = text => {
         ManageActions.modeChange(text);
     };
     return (
         <Form
-            inputDesc={inputDesc}
-            inputTitle={inputTitle}
+            title={title}
+            desc={desc}
             mode={mode}
             onChangeTitle={handleChangeTitle}
             onChangeDesc={handleChangeDesc}
@@ -46,9 +45,6 @@ const mapStateToProps = ({manage}) => ({
     contents: manage.contents,
     current: manage.current,
     mode: manage.mode,
-    input: manage.input,
-    inputTitle: manage.inputTitle,
-    inputDesc: manage.inputDesc,
 });
 
 const mapDispatchToProps = dispatch => ({
