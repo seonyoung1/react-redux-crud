@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as manageActions from "../modules/manage";
 import Tab from "../components/Tab";
-import UpdateContainer from "./UpdateContainer";
-import CreateContainer from "./CreateContainer";
+// import UpdateContainer from "./UpdateContainer";
+// import CreateContainer from "./CreateContainer";
+import FormContainer from "./FormContainer";
 
 const AppsContainer = ({ ManageActions, mode, current, contents, }) => {
     const handleSelect = current => {
@@ -13,7 +14,6 @@ const AppsContainer = ({ ManageActions, mode, current, contents, }) => {
     return (
         <>
             {mode === "welcome" && <p style={{margin:"60px 0",textAlign:"center"}}>컨텐츠를 추가하세요!</p>}
-            {mode === "update" && <UpdateContainer /> }
             {mode === "read" &&
                 <Tab
                     mode={mode}
@@ -22,9 +22,9 @@ const AppsContainer = ({ ManageActions, mode, current, contents, }) => {
                     onSelect={handleSelect}
                 />
             }
-            {mode === "create" && (
-                <CreateContainer />
-            )}
+            {/*{mode === "update" && <UpdateContainer /> }*/}
+            {/*{mode === "create" && <CreateContainer /> }*/}
+            {( mode === "create" || mode === "update" ) && <FormContainer /> }
         </>
     );
 };

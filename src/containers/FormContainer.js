@@ -1,28 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as manageActions from "../modules/manage";
 import Form from "../components/Form";
 
-const CreateContainer = ({ ManageActions, mode, inputTitle, inputDesc, contents  }) => {
+const FormContainer = ({ ManageActions, mode, contents, current }) => {
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
+    const blankCheck = useRef();
+
+    useEffect(() => {
+        if( mode === "update" ){
+            setTitle(contents[current].title);
+            setDesc(contents[current].desc);
+        }
+    }, []);
 
     const handleSubmit = e => {
         e.preventDefault();
-        ManageActions.createList(
-            title,
-            desc
-        );
-        ManageActions.select(contents.length);
+        if( title === "" ){
+            alert("제목을 입력하세요!");
+            blankCheck.current.focus();
+            return;
+        }
+        if( mode === "create" ){
+            ManageActions.createList(title, desc );
+            ManageActions.select(contents.length);
+        }
+        if( mode === "update" ){
+            ManageActions.updateList(contents[current].id, title, desc );
+        }
         ManageActions.modeChange("read");
     };
     const handleChangeTitle = e => {
-        //ManageActions.changeInputTitle(e.target.value);
         setTitle(e.target.value);
     };
     const handleChangeDesc = e => {
-        //ManageActions.changeInputDesc(e.target.value);
         setDesc(e.target.value);
     };
     const handleMode = text => {
@@ -37,6 +50,7 @@ const CreateContainer = ({ ManageActions, mode, inputTitle, inputDesc, contents 
             onChangeDesc={handleChangeDesc}
             onSubmit={handleSubmit}
             onMode={handleMode}
+            blankCheck={blankCheck}
         />
     );
 };
@@ -54,4 +68,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(CreateContainer);
+)(FormContainer);

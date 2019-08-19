@@ -26,12 +26,12 @@ const Box = styled.div`
     }
 `;
 
-const Form = ({ title, desc, mode, onChangeTitle, onChangeDesc, onSubmit, onMode }) => {
+const Form = ({ title, desc, mode, blankCheck, onChangeTitle, onChangeDesc, onSubmit, onMode }) => {
     return(
         <Box className={`form ${mode}`}>
             <h2>{mode}</h2>
             <form onSubmit={onSubmit}>
-                <input type="text" name="title" value={title} onChange={onChangeTitle} placeholder="Title" />
+                <input type="text" name="title" value={title} onChange={onChangeTitle} placeholder="Title" ref={blankCheck} />
                 <textarea placeholder="Description" name="desc" value={desc} onChange={onChangeDesc}>
                 </textarea>
                 <div className="group">
