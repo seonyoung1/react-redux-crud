@@ -10,9 +10,15 @@
 
 components 시절의 코드로 작성했음
 
+## branch - all-redux
+
+모든 데이터를 redux 로 관리
+
 ## branch - master
 
 함수형으로 리빌딩~
+
+input 은 리덕스에서 제외하고 local 에서 관리
 
 ## 공부날짜
 
@@ -20,5 +26,7 @@ components 시절의 코드로 작성했음
 
 ## 이후 추가해야 할 것
 
-- [ ] input 을 공용해서 사용할 수 없을까? 
+- [x] input 을 공용해서 사용할 수 없을까? 
       현재 input 당 하나씩 변수, 액션 설정하는 비효율의 극치...ㅜㅜ
+      
+      input data를 local 에 할당해서 input 관련 Action은 제거!
