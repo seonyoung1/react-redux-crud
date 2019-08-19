@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Form from "../components/Form";
 import {bindActionCreators} from "redux";
 import * as manageActions from "../store/modules/manage";
 import {connect} from "react-redux";
 
-class CreateContainer extends Component {
-    handleSubmit = e => {
-        const { ManageActions, inputTitle, inputDesc, contents } = this.props;
+const CreateContainer = ({ ManageActions, mode, inputTitle, inputDesc, contents  }) => {
+    const handleSubmit = e => {
         e.preventDefault();
         ManageActions.createList(
             inputTitle,
@@ -16,40 +15,32 @@ class CreateContainer extends Component {
         ManageActions.modeChange("read");
         ManageActions.changeInputTitle("");
         ManageActions.changeInputDesc("");
-        //console.log(this.props.inputTitle, this.props.inputDesc);
     };
-    handleChangeTitle = e => {
-        const { ManageActions } = this.props;
+    const handleChangeTitle = e => {
         ManageActions.changeInputTitle(e.target.value);
     };
-    handleChangeDesc = e => {
-        const { ManageActions } = this.props;
+    const handleChangeDesc = e => {
         ManageActions.changeInputDesc(e.target.value);
     };
-    handleChange = e => {
-        const { ManageActions } = this.props;
+    const handleChange = e => {
         ManageActions.changeInput({[e.target.name] : e.target.value});
         //[e.target.name] : e.target.value
     };
-    handleMode = text => {
-        const { ManageActions } = this.props;
+    const handleMode = text => {
         ManageActions.modeChange(text);
     };
-    render() {
-        const { inputDesc, inputTitle, mode } = this.props;
-        return (
-            <Form
-                inputDesc={inputDesc}
-                inputTitle={inputTitle}
-                mode={mode}
-                onChangeTitle={this.handleChangeTitle}
-                onChangeDesc={this.handleChangeDesc}
-                onSubmit={this.handleSubmit}
-                onMode={this.handleMode}
-            />
-        );
-    }
-}
+    return (
+        <Form
+            inputDesc={inputDesc}
+            inputTitle={inputTitle}
+            mode={mode}
+            onChangeTitle={handleChangeTitle}
+            onChangeDesc={handleChangeDesc}
+            onSubmit={handleSubmit}
+            onMode={handleMode}
+        />
+    );
+};
 
 const mapStateToProps = ({manage}) => ({
     contents: manage.contents,
