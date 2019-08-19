@@ -1,13 +1,31 @@
 import { createGlobalStyle } from "styled-components";
+import reset from "styled-reset";
 
 const GlobalStyled = createGlobalStyle`
-    .app{
-        width:100%; max-width:600px;
-        padding:20px;
+    ${reset};
+    @import url("https://cdn.jsdelivr.net/gh/theeluwin/NotoSansKR-Hestia@master/stylesheets/NotoSansKR-Hestia.css");
+    *{
+        box-sizing:border-box;
     }
-    .app h1{
-        font-size:24px;
-        border-bottom:1px solid #000;
+    body{
+        font-family:"Noto Sans Korean", sans-serif;
+        font-size:16px;
+        letter-spacing:-0.01em; line-height:1.4; -webkit-font-smoothing : antialiased;
+    }
+    input, select, textarea {
+        vertical-align:middle;
+        box-sizing:border-box;
+        border-radius:0;
+        font-family:"Noto Sans Korean", sans-serif;
+        font-size:16px;
+    }
+    button {
+        font-family:"Noto Sans Korean", sans-serif;
+        box-sizing:border-box;
+        padding:0;
+        border:0;
+        background:transparent;
+        cursor:pointer
     }
 `;
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from "../components/Form";
+import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as manageActions from "../modules/manage";
-import {connect} from "react-redux";
+import Form from "../components/Form";
 
 const CreateContainer = ({ ManageActions, mode, inputTitle, inputDesc, contents  }) => {
     const handleSubmit = e => {

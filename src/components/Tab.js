@@ -17,8 +17,8 @@ const TabBox = styled.div`
         padding:40px 15px;
         min-height:100px;
         border-radius:3px;
-        h2{
-            margin-bottom:10px;
+        h2 {
+            margin-bottom:20px;font-weight:bold;font-size:24px;
         }
     }
     .welcome{
@@ -33,7 +33,7 @@ const Tab = ({ current, contents, onSelect }) => {
                 { contents.map((item, index) => {
                     return (
                     <li key={item.id}>
-                        <button onClick={() => onSelect(index)} className={index === current ? "active" : ""}>
+                        <button onClick={() => onSelect(index)} className={index === current && "active"}>
                             {item.title}
                         </button>
                     </li>)

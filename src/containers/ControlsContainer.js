@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import Controls from "../components/Controls";
-import CreateContainer from "./CreateContainer";
 import * as manageActions from "../modules/manage";
+import Controls from "../components/Controls";
 
-const ControlsContainer = ({ mode, current, contents, ManageActions }) => {
+const ControlsContainer = ({ current, contents, ManageActions }) => {
     const handleDelete = () => {
         let modal = false;
         window.confirm("Really??") ? modal = true : modal = false;
@@ -19,9 +18,6 @@ const ControlsContainer = ({ mode, current, contents, ManageActions }) => {
     };
     return (
         <>
-            {mode === "create" && (
-                <CreateContainer />
-            )}
             <Controls
                 onDelete={handleDelete}
                 onMode={handleMode}

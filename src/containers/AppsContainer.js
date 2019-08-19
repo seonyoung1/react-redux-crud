@@ -1,26 +1,30 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import * as manageActions from "../modules/manage";
 import Tab from "../components/Tab";
 import UpdateContainer from "./UpdateContainer";
-import * as manageActions from "../modules/manage";
+import CreateContainer from "./CreateContainer";
 
-const TabContainer = ({ ManageActions, mode, current, contents, }) => {
+const AppsContainer = ({ ManageActions, mode, current, contents, }) => {
     const handleSelect = current => {
         ManageActions.select(current);
     };
     return (
         <>
-            {mode === "welcome" && <p className="welcome">컨텐츠를 추가하세요!</p>}
+            {mode === "welcome" && <p style={{margin:"60px 0",textAlign:"center"}}>컨텐츠를 추가하세요!</p>}
             {mode === "update" && <UpdateContainer /> }
-            {(mode !== "update" && mode !== "welcome" ) &&
-            <Tab
-                mode={mode}
-                current={current}
-                contents={contents}
-                onSelect={handleSelect}
-            />
+            {mode === "read" &&
+                <Tab
+                    mode={mode}
+                    current={current}
+                    contents={contents}
+                    onSelect={handleSelect}
+                />
             }
+            {mode === "create" && (
+                <CreateContainer />
+            )}
         </>
     );
 };
@@ -44,4 +48,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(TabContainer);
+)(AppsContainer);
