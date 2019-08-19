@@ -1,9 +1,34 @@
 import React from 'react';
-import "./Form.css";
+import styled from "styled-components";
+
+const Box = styled.div`
+    margin-top:20px;padding:15px;background-color:#dfe6e9;
+    &.create{
+        background-color:rgba(99, 205, 218, 0.5);
+        button{
+            background-color:rgba(61, 193, 211,1.0);
+        }
+    }
+    h2{
+        font-size:18px;margin-bottom:10px;
+    }
+    input{
+        display:block;width:100%;padding:3px 10px;border:none;background-color:rgba(255,255,255,.8);margin-bottom:15px;border-radius:2px;
+    }
+    textarea{
+        display: block;width:100%;min-height:50px;border:none;background-color:rgba(255,255,255,.8);border-radius:2px;resize: none;margin-bottom:15px;padding:5px 10px;
+    }
+    .group{
+        text-align:right;
+    }
+    button{
+        padding:5px 12px;background-color:#596275;color:#fff;font-size:16px;border-radius:3px;margin-left:10px;
+    }
+`;
 
 const Form = ({ mode, inputTitle, inputDesc, onChangeTitle, onChangeDesc, onSubmit, onMode }) => {
     return(
-        <div className={`form ${mode}`}>
+        <Box className={`form ${mode}`}>
             <h2>{mode}</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" name="title" value={inputTitle} onChange={onChangeTitle} placeholder="Title" />
@@ -14,7 +39,7 @@ const Form = ({ mode, inputTitle, inputDesc, onChangeTitle, onChangeDesc, onSubm
                     <button onClick={() => onMode("read")}>취소</button>
                 </div>
             </form>
-        </div>
+        </Box>
     )
 };
 

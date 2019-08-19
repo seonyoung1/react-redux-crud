@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import "./App.css";
 import TabContainer from "./containers/TabContainer";
 import ControlsContainer from "./containers/ControlsContainer";
 
