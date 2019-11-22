@@ -20,7 +20,5 @@
 ## branch
 
 1. components - class 코드
-
 2. all-redux - 모든 데이터를 redux 로 관리
-
 3. master - 함수형으로 수정, input 은 리덕스에서 제외하고 local 에서 관리
