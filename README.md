@@ -1,7 +1,7 @@
 # React + Redux 연습페이지
 > redux 를 적용해서 CRUD 페이지 만들어보기.
 >
-> [사이트보기](https://seonn-redux.netlify.com/)
+> [사이트보기](https://seony-redux.netlify.com/)
 
 ## 개발환경
 > create-react-app
